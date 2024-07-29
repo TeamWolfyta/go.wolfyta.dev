@@ -50,11 +50,6 @@
       "destination": "https://steamcommunity.com/id/TeamWolfyta/",
       "permanent": true,
       "source": "/steam"
-    },
-    {
-      "destination": "/404.html",
-      "permanent": true,
-      "source": "/(.*)"
     }
   ]
 }
