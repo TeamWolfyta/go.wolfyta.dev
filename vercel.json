@@ -52,7 +52,7 @@
       "source": "/steam"
     },
     {
-      "destination": "https://raw.githubusercontent.com/TeamWolfyta/Yukino/:path*",
+      "destination": "https://teamwolfyta.github.io/Yukino/:path*",
       "permanent": true,
       "source": "/yukino/:path*"
     }
