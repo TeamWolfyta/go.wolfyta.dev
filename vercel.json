@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "statusCode": 404,
+      "destination": "https://google.com"
+    }
+  ],
   "redirects": [
     {
       "destination": "https://github.com/TeamWolfyta",
@@ -55,11 +62,6 @@
       "destination": "https://raw.githubusercontent.com/TeamWolfyta/Yukino-Public/main/:path*",
       "permanent": true,
       "source": "/yukino/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "statusCode": 404,
-      "destination": "https://google.com"
     }
   ]
 }
