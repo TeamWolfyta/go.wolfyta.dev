@@ -59,7 +59,7 @@
       "source": "/steam"
     },
     {
-      "destination": "https://raw.githubusercontent.com/TeamWolfyta/Yukino-Public/main/:path*",
+      "destination": "https://raw.githubusercontent.com/TeamWolfyta/Yukino-Public/main/scripts/:path*",
       "permanent": true,
       "source": "/yukino/:path*"
     }
