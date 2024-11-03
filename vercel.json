@@ -1,0 +1,87 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "destination": "https://github.com/TeamWolfyta",
+      "permanent": true,
+      "source": "/github"
+    },
+    {
+      "destination": "https://discord.com/users/193657209660375040",
+      "permanent": true,
+      "source": "/discord-profile"
+    },
+    {
+      "destination": "https://discord.gg/9REcg4WdmQ",
+      "permanent": true,
+      "source": "/discord-server"
+    },
+    {
+      "destination": "https://www.bungie.net/7/en/User/Profile/1/4611686018451601257?bgn=TeamWolfyta",
+      "permanent": true,
+      "source": "/bungie"
+    },
+    {
+      "destination": "https://open.spotify.com/user/kieran0203?si=366f5094f8eb4245",
+      "permanent": true,
+      "source": "/spotify"
+    },
+    {
+      "destination": "https://www.reddit.com/user/TEAMGAM3R",
+      "permanent": true,
+      "source": "/reddit"
+    },
+    {
+      "destination": "https://www.twitch.tv/teamwolfyta",
+      "permanent": true,
+      "source": "/twitch"
+    },
+    {
+      "destination": "https://x.com/TeamWolfyta",
+      "permanent": true,
+      "source": "/twitter"
+    },
+    {
+      "destination": "https://www.youtube.com/channel/UCwSrKBEtN_sktfZM1bIVfoA",
+      "permanent": true,
+      "source": "/youtube"
+    },
+    {
+      "destination": "https://steamcommunity.com/id/TeamWolfyta/",
+      "permanent": true,
+      "source": "/steam"
+    },
+    {
+      "destination": "https://raw.githubusercontent.com/TeamWolfyta/Yukino-Public/main/scripts/:path*",
+      "permanent": true,
+      "source": "/yukino/:path*"
+    },
+    {
+      "destination": "https://myanimelist.net/profile/TeamWolfyta",
+      "permanent": true,
+      "source": "/myanimelist"
+    }
+  ],
+  "rewrites": [
+    {
+      "destination": "/github",
+      "has": [
+        {
+          "type": "host",
+          "value": "wolfyta.dev"
+        }
+      ],
+      "source": "/(.*)"
+    },
+    {
+      "destination": "/myanimelist",
+      "has": [
+        {
+          "type": "host",
+          "value": "wolfyta.moe"
+        }
+      ],
+      "source": "/(.*)"
+    }
+  ]
+}
