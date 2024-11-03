@@ -4,12 +4,15 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241022.0",
+    "npm-run-all": "^4.1.5",
     "wrangler": "^3.83.0"
   },
   "name": "go.wolfyta.dev",
   "scripts": {
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "deploy": "wrangler deploy --minify",
-    "dev": "wrangler dev"
+    "build": "esbuild --bundle src/index.ts --format=esm --outfile=dist/_worker.js",
+    "deploy": "wrangler pages publish dist",
+    "dev": "run-p dev:*",
+    "dev:esbuild": "esbuild --bundle src/index.ts --format=esm --watch --outfile=dist/_worker.js",
+    "dev:wrangler": "wrangler pages dev dist --live-reload"
   }
 }
