@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "hono": "^4.6.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "wrangler": "^3.83.0"
+  },
+  "name": "go.wolfyta.dev",
+  "scripts": {
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "deploy": "wrangler deploy --minify",
+    "dev": "wrangler dev"
+  }
+}

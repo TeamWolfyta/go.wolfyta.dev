@@ -8,7 +8,7 @@ rules:
     optional: true
     options:
       - flake
-      - vercel
+      - npm
   type:
     level: error
     options:
