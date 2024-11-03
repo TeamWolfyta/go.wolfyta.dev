@@ -23,7 +23,6 @@
             (_: {
               languages = {
                 nix.enable = true;
-                shell.enable = true;
               };
 
               pre-commit.hooks = {
