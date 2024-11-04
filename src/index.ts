@@ -42,7 +42,7 @@ export default {
       "/myanimelist": "https://myanimelist.net/profile/TeamWolfyta",
     };
 
-    if (hostname in domainRedirects) {
+    if (hostname in domainRedirects && pathname === "/") {
       return Response.redirect(
         domainRedirects[hostname],
         StatusCodes.PERMANENT_REDIRECT,
