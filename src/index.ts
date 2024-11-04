@@ -6,7 +6,7 @@ export default {
     env: Env,
     _ctx: ExecutionContext,
   ): Promise<Response> {
-    const ip = request.headers.get("x-real-ip") as string;
+    const ip = request.headers.get("cf-connecting-ip") as string;
     const { success } = await env.RATE_LIMITER.limit({ key: ip });
     if (!success) {
       const status = StatusCodes.TOO_MANY_REQUESTS;
