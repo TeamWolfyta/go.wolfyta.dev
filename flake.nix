@@ -22,10 +22,16 @@
           modules = [
             (_: {
               languages = {
+                javascript = {
+                  enable = true;
+                  pnpm.enable = true;
+                };
                 nix.enable = true;
+                typescript.enable = true;
               };
 
               pre-commit.hooks = {
+                biome.enable = true;
                 commitlint-rs = {
                   enable = true;
                   entry = "commitlint --edit";

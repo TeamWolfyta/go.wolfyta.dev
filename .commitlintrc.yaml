@@ -7,8 +7,9 @@ rules:
   scope:
     optional: true
     options:
+      - cloudflare
       - flake
-      - vercel
+      - npm
   type:
     level: error
     options:

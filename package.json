@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "typescript": "^5.5.2",
+    "wrangler": "^3.60.3"
+  },
+  "name": "go-wolfyta-dev",
+  "private": true,
+  "scripts": {
+    "cf-typegen": "wrangler types",
+    "deploy": "wrangler deploy",
+    "start": "wrangler dev"
+  },
+  "version": "0.0.0"
+}
