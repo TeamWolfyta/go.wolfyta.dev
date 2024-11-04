@@ -43,7 +43,10 @@ export default {
     };
 
     if (hostname in domainRedirects) {
-      return Response.redirect(domainRedirects[hostname], 308);
+      return Response.redirect(
+        domainRedirects[hostname],
+        StatusCodes.PERMANENT_REDIRECT,
+      );
     }
 
     if (pathname.startsWith("/yukino/")) {
@@ -56,7 +59,10 @@ export default {
     }
 
     if (pathname in pathRedirects) {
-      return Response.redirect(pathRedirects[pathname], 308);
+      return Response.redirect(
+        pathRedirects[pathname],
+        StatusCodes.PERMANENT_REDIRECT,
+      );
     }
 
     const status = StatusCodes.NOT_FOUND;
