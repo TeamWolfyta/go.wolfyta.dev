@@ -1,9 +1,23 @@
+import { StatusCodes, getReasonPhrase } from "http-status-codes";
+
 export default {
   async fetch(
     request: Request,
-    _env: Env,
+    env: Env,
     _ctx: ExecutionContext,
   ): Promise<Response> {
+    const ip = request.headers.get("x-real-ip") as string;
+    const { success } = await env.RATE_LIMITER.limit({ key: ip });
+    if (!success) {
+      const status = StatusCodes.TOO_MANY_REQUESTS;
+      return new Response(JSON.stringify({ error: getReasonPhrase(status) }), {
+        status,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+
     const url = new URL(request.url);
     const { hostname, pathname } = url;
 
@@ -45,8 +59,9 @@ export default {
       return Response.redirect(pathRedirects[pathname], 308);
     }
 
-    return new Response(JSON.stringify({ error: "Not Found" }), {
-      status: 404,
+    const status = StatusCodes.NOT_FOUND;
+    return new Response(JSON.stringify({ error: getReasonPhrase(status) }), {
+      status,
       headers: {
         "Content-Type": "application/json",
       },

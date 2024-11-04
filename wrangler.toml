@@ -7,3 +7,9 @@ compatibility_flags = ["nodejs_compat"]
 
 [observability]
 enabled = true
+
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "576"
+simple = { limit = 5, period = 60 }
