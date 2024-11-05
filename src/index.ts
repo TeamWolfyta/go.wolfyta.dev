@@ -1,5 +1,18 @@
 import { StatusCodes, getReasonPhrase } from "http-status-codes";
 
+function createErrorResponse(status: number, message: string): Response {
+  return new Response(JSON.stringify({ error: message }), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
+function createRedirectResponse(status: number, url: string): Response {
+  return Response.redirect(url, status);
+}
+
 export default {
   async fetch(
     request: Request,
@@ -10,12 +23,7 @@ export default {
     const { success } = await env.RATE_LIMITER.limit({ key: ip });
     if (!success) {
       const status = StatusCodes.TOO_MANY_REQUESTS;
-      return new Response(JSON.stringify({ error: getReasonPhrase(status) }), {
-        status,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      return createErrorResponse(status, getReasonPhrase(status));
     }
 
     const url = new URL(request.url);
@@ -43,34 +51,29 @@ export default {
     };
 
     if (hostname in domainRedirects && pathname === "/") {
-      return Response.redirect(
-        domainRedirects[hostname],
+      return createRedirectResponse(
         StatusCodes.PERMANENT_REDIRECT,
+        domainRedirects[hostname],
       );
     }
 
     if (pathname.startsWith("/yukino/")) {
-      return Response.redirect(
+      return createRedirectResponse(
+        StatusCodes.PERMANENT_REDIRECT,
         `https://raw.githubusercontent.com/TeamWolfyta/Yukino-Public/main/scripts/${pathname.slice(
           8,
         )}`,
-        308,
       );
     }
 
     if (pathname in pathRedirects) {
-      return Response.redirect(
-        pathRedirects[pathname],
+      return createRedirectResponse(
         StatusCodes.PERMANENT_REDIRECT,
+        pathRedirects[pathname],
       );
     }
 
     const status = StatusCodes.NOT_FOUND;
-    return new Response(JSON.stringify({ error: getReasonPhrase(status) }), {
-      status,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    return createErrorResponse(status, getReasonPhrase(status));
   },
 } satisfies ExportedHandler<Env>;
